@@ -1,7 +1,7 @@
 # OSCS: A 7-Layer Universal Education Taxonomy for Open, Competency-Based K-12 Curriculum Standards
 
 **White Paper**  
-**Version 1.0** — July 2026  
+**Version 1.1** — July 2026  
 
 ---
 
@@ -51,6 +51,29 @@ OSCS organizes curriculum through seven distinct but interconnected layers. This
 **Layer 3 (Standards)** is the primary organizational unit.  
 **Layer 4 (Rank)** is a property of standards, not a container. This allows one standard to be taught at multiple levels of mastery without duplication.
 
+### 2.1 Foundational Learning Domains (Layer 1)
+
+OSCS currently defines **nine** Foundational Learning Domains at Layer 1:
+
+| Domain | Name | Description |
+|--------|------|-------------|
+| 1 | Language, Literacy & Communication | Reading, writing, speaking, listening, and multilingual communication |
+| 2 | Mathematical & Quantitative Reasoning | Number sense, operations, algebra, geometry, data, financial literacy, and mathematical practices |
+| 3 | Scientific Inquiry & Understanding the Natural World | Science practices, crosscutting concepts, and disciplinary core ideas |
+| 4 | Human Societies, History, Geography & Civic Life | History, civics, economics, geography, and evidence-based study of religion and culture |
+| 5 | Creative Arts & Expressive Development | Visual arts, music, dance, theatre, and media arts |
+| 6 | Health, Physical Development & Wellness | Physical education, health education, and personal wellness |
+| 7 | Personal Agency, Social-Emotional Learning & Character | SEL, executive function, ethics, and character development |
+| 8 | Technological Fluency, Computational Thinking & Innovation | Computer science, digital literacy, and innovation |
+| **9** | **Theology, Philosophy, and Worldviews** | Theology, faith traditions, philosophy, ethics, metaphysics, and systems of meaning (religious and secular) |
+
+**Important Distinction in Domain 4 vs Domain 9**:
+
+- **Domain 4 (Human Societies...)** contains the *evidence-based, historical, and sociological study of religion* (Religious Studies).
+- **Domain 9 (Theology, Philosophy, and Worldviews)** contains *faith-based theology*, personal belief systems, and philosophical approaches to meaning and value. This domain is intended for topics that rely significantly on belief, tradition, or philosophical reasoning rather than empirical verification.
+
+This bifurcation allows OSCS to treat religious studies with the same standards of evidence as history and civics, while giving theology and faith traditions their own dedicated space.
+
 ---
 
 ### 3. Structural Implementation
@@ -61,16 +84,18 @@ OSCS is implemented as a **GitHub-based, Markdown-first repository** with rich Y
 
 ```
 oscs/
+├── language-literacy-communication/
 ├── mathematical-quantitative-reasoning/
-│   └── number-and-operations-fractions/
-│       └── standard-fractions-classification-equivalence.md
+├── scientific-inquiry-natural-world/
+├── human-societies-history-geography-civic-life/
+├── creative-arts-expressive-development/
+├── health-physical-development-wellness/
+├── personal-agency-sel-character/
+├── technological-fluency-computational-thinking-innovation/
+├── theology-philosophy-and-worldviews/          ← New Domain
 ├── progression-maps/
 ├── cross-cutting/
-│   ├── cognitive-depth/
-│   ├── application-contexts/
-│   └── dispositions-mindsets/
-├── alignments/
-└── LICENSE, README, TAXONOMY.md
+└── alignments/
 ```
 
 Each standard file contains:
@@ -80,6 +105,19 @@ Each standard file contains:
 - Links to progression maps for vertical alignment
 
 This structure is human-editable, version-controllable, searchable, and directly consumable by AI systems via retrieval-augmented generation (RAG).
+
+---
+
+### 3.1 Initial Layer 2 Strands under Theology, Philosophy, and Worldviews
+
+The following Layer 2 strands are proposed for the new domain:
+
+- `theology-and-faith-traditions` — Study of specific religious theologies, doctrines, and faith practices
+- `philosophy-and-secular-worldviews` — Secular philosophy, humanism, existentialism, and non-religious meaning systems
+- `ethics-and-moral-philosophy` — Ethical reasoning, moral frameworks, and character
+- `metaphysics-and-ultimate-questions` — Questions of reality, consciousness, free will, and meaning
+
+These strands allow clear organization while supporting both religious and secular perspectives on meaning and value.
 
 ---
 
@@ -123,7 +161,7 @@ OSCS is released under the **Creative Commons Attribution 4.0 International (CC 
 The OSCS 7-layer taxonomy offers a practical, forward-looking framework that balances rigor with flexibility. By separating standards from progression levels and embedding rich metadata, it supports both traditional schooling and emerging models of personalized, competency-based, and AI-augmented learning.
 
 **Immediate Roadmap**
-- Publish full taxonomy documentation and example standards (including detailed fractions progression)
+- Publish full taxonomy documentation and example standards
 - Build community contribution guidelines
 - Develop reference implementations for AI tutor integration
 - Create visual tools and progression map generators
