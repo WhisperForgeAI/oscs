@@ -1,7 +1,7 @@
 # OSCS: A 7-Layer Universal Education Taxonomy for Open, Competency-Based K-12 Curriculum Standards
 
 **White Paper**  
-**Version 1.2** — July 2026  
+**Version 1.3** — July 2026  
 
 ---
 
@@ -90,7 +90,7 @@ oscs/
 ├── health-wellness/
 ├── personal-agency/
 ├── technology/
-├── theology-philosophy/          ← New Domain
+├── theology-philosophy/
 ├── progression-maps/
 ├── cross-cutting/
 └── alignments/
@@ -98,16 +98,68 @@ oscs/
 
 Each folder contains a `README.md` with the **Full Name** as the title.
 
+### 3.1 Layers 3–7: Standards and Metadata
+
+**Layer 3** (Specific Learning Standards) is represented as individual Markdown (`.md`) files. These files contain the actual learning target.
+
+**Layers 4–7** are not represented as additional folders. Instead, they are stored as **YAML frontmatter** at the top of each Layer 3 file. This keeps the directory structure shallow while making the metadata machine-readable.
+
+Example frontmatter for Layers 4–7:
+
+```yaml
 ---
+# Layer 3
+standard_id: math-4-nf-a1-equivalent-fractions
+title: "Explain and Generate Equivalent Fractions"
+domain: mathematics
+strand: number-and-operations
 
-### 3.1 Initial Layer 2 Strands under Theology, Philosophy, and Worldviews
+# Layer 4: Rank / Progression
+rank: proficient
+traditional_grade_equivalent: "4"
+prerequisites: ["rank-developing/math-unit-fractions"]
 
-The following Layer 2 strands are proposed for the new domain:
+# Layer 5: Cognitive Depth
+cognitive_depth: ["apply", "analyze"]
+practices: ["use-visual-models", "justify-with-evidence"]
 
-- `theology-and-faith-traditions`
-- `philosophy-and-secular-worldviews`
-- `ethics-and-moral-philosophy`
-- `metaphysics-and-ultimate-questions`
+# Layer 6: Application Contexts
+contexts: ["personal", "local", "real-world"]
+
+# Layer 7: Dispositions
+ dispositions: ["growth-mindset", "persistence"]
+---
+```
+
+### 3.2 Optional Sensitivity & Gating Metadata
+
+In addition to Layers 4–7, Layer 3 files may include an optional `sensitivity` block in the YAML frontmatter. This metadata supports **parent gating**, **age appropriateness**, and **content warnings** for sensitive or contested topics.
+
+This feature is **optional** but recommended for topics that may require parental involvement or are developmentally sensitive.
+
+**Recommended Sensitivity Fields:**
+
+```yaml
+sensitivity:
+  level: high                    # low | medium | high
+  parental_consent_required: true
+  minimum_age: 14
+  minimum_rank: advanced
+  topic_type: contested_social_issue   # biological_reality | ethics | ideology | mental_health | contested_social_issue
+  recommended_context: "parental guidance strongly recommended"
+  content_warnings:
+    - "Discusses medical interventions for minors"
+    - "Presents competing perspectives on a contested topic"
+```
+
+**Purpose of Sensitivity Metadata:**
+
+- Enables families and educators to filter or gate content
+- Allows the AI teacher to respect parental preferences
+- Provides transparency for contested or sensitive subjects
+- Supports age-appropriate and rank-appropriate delivery
+
+This metadata works alongside the existing Layer 4 Rank system to give fine-grained control over when and how content is presented.
 
 ---
 
